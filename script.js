@@ -8,8 +8,9 @@ const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
 
-document.querySelector('.check').addEventListener('click', function () {
+const enterKey = function () {
   const guess = Number(document.querySelector('.guess').value);
+
   // When there is no input
   if (!guess) {
     displayMessage('🙆🏽‍♂️ No Number!');
@@ -37,6 +38,16 @@ document.querySelector('.check').addEventListener('click', function () {
       displayMessage('😭😭😭 You lost the Game!');
       document.querySelector('.score').textContent = 0;
     }
+  }
+};
+
+// Click the button
+document.querySelector('.check').addEventListener('click', enterKey);
+
+// Press enter key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    enterKey();
   }
 });
 
